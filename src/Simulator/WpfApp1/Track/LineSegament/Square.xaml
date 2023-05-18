@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="WpfApp1.Track.LineSegament.Square"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Track.LineSegament"
+             mc:Ignorable="d" Height="250" Width="290">
+    <Grid>
+        <Border BorderBrush="#FFEFF6F7" BorderThickness="12"/>
+
+    </Grid>
+</UserControl>

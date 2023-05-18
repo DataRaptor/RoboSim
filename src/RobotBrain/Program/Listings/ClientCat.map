@@ -1,0 +1,9 @@
+Component: ARM Compiler 5.06 update 6 (build 750) Tool: armlink [4d35ed]
+
+==============================================================================
+
+Section Cross References
+
+    main.o(.ARM.exidx) refers to main.o(i._Z5Setupv) for i._Z5Setupv
+    main.o(.ARM.exidx) refers to main.o(i._Z4Loopv) for i._Z4Loopv
+

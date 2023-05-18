@@ -1,0 +1,455 @@
+MLOC  OxO56
+MLOC  OxO34
+MLOC  Ox678
+
+
+
+Normal Suicide Node operation
+If doesnot match execution will stop.
+IF matched replace NCOM with 
+-----------------------------
+NCOM  AO O1OOO1O
+CALL  OxOO
+NCOM  AO O1OOO1O
+CALL  Ox34
+NCOM  AO O1O1OOO
+CALL  Ox45
+NCOM  AO O1O1OOO
+CALL  Ox34
+RETN
+
+
+
+
+
+Strict Suicide Node operation:
+Each Node must match this pattern. 
+Otherwise every node will reset
+If doesnot match execution will stop.
+IF matched replace SCOM with 
+-----------------------------
+SCOM  AO O1OOO1O
+CALL  OxOO
+SCOM  AO O1OOO1O
+CALL  Ox34
+SCOM  AO O1O1OOO
+CALL  Ox45
+SCOM  AO O1O1OOO
+CALL  Ox34
+RETN
+
+
+
+
+
+Normal Node:
+COMP is failed. then execution will stop
+and check for another matching
+------------------------------
+COMP  AO O1OOO1O
+CALL  Ox34
+RETN
+
+
+COMP  AO O1OOO1O
+COMP  F12 45
+COMP  F9  12
+CALL  Ox34
+RETN
+
+
+COMP  AO 11OOO1O
+COMP  F3  23
+CALL  Ox34
+RETN
+
+
+syntax error:
+COMP  AO O1OOO1O
+COMP  F12 45
+COMP  AO O1O1O1O
+CALL  Ox34
+RETN
+
+
+
+
+
+
+
+
+
+Function Difinition area
+
+OxOOOO1   INCR F1
+OxOOOO2   CALL OxOOO8O
+OxOOOO3   RETN
+OxOOOO4   DECR F5
+OxOOOO5   CALL OxOOO95
+OxOOOO6   RETN
+OxOOOO7   MOVE P1 1
+OxOOOO8   MOVE P3 700
+OxOOOO9   CALL OxOOO97
+OxOOO10   RETN
+OxOOO11   
+OxOOO12   
+OxOOO13   
+OxOOO14   
+OxOOO15   
+OxOOO16   
+OxOOO17   
+OxOOO18   
+OxOOO19   
+OxOOO20   
+
+
+
+
+
+
+
+
+
+
+
+
+COMP  AO O1OOO1O
+CALL  OxOO
+COMP  AO O1O1OOO
+COMP  AO O1O1OOO
+COMP  AO O1OO1OO
+CALL  OxO5
+COMP  AO O1O1O1O
+CALL  Ox15
+
+
+
+
+
+OxOO  CALL  OxO6
+OxO1  INCR  F3
+OxO2  CALL  Ox15
+OxO3  MOVE  A12 34
+OxO4  COMP  F4  2
+OxO5  JUMP  Ox45
+OxO6  RETN
+
+
+OxO6  			//Switch Len Left
+
+
+
+
+LOOP  OxO5 5
+
+
+
+COMP  AO O1O1OOO
+CALL  OxO5
+COMP  AO O1O1OOO
+CALL  OxO5
+COMP  AO O1OO1OO
+CALL  OxO5
+RETN
+
+COMP  AO O1OO1OO
+CALL  OxO5
+RETN
+
+COMP  AO O1O1OOO
+CALL  OxO5
+RETN
+
+
+
+COMP  AO O1O1OOO
+COMP  F1  1
+COMP  F3  4
+COMP  C12 2
+CALL  OxO8
+
+
+
+//When any anction is called clear
+all suicide node
+
+SCOM  AO O1O1OOO
+SCOM  F1  1
+SCOM  F3  4
+SCOM  C12 2
+CALL  OxO8
+
+
+
+
+
+
+
+//Predefined Functions
+
+Ox87  Sweep Left to Line Skip 1 Line
+Ox88  Sweep Right to Line Skip 1 Line
+Ox89  Sweep Left to Line Skip 2 Line
+Ox90  Sweep Right to Line Skip 2 Line
+Ox91  Sweep Left to Line Skip 4 Line
+Ox92  Sweep Right to Line Skip 4 Line
+
+Ox93  Set Left Speed
+Ox94  Set Right Speed
+Ox95  Wait for Line
+Ox96  Beep
+Ox97  Await 
+
+
+
+
+
+IF 
+1000000 
+> P0 1
+> LOAD triangle
+> INCR P0
+ENDIF
+
+
+
+IF 
+ 1000100 
+ A0 3
+THEN 
+ LOAD 3circle
+ DECR P8
+ ASIN B2 3
+END
+
+
+
+
+COMP J0 1000100
+COMP P0 12
+COMP A0 3
+LOAD triangle
+ASIN P1 3
+ASIN A0 5
+
+
+COMP J0 0010010
+COMP A0 1
+COMP A1 2
+LOAD 3circle
+
+
+
+
+PATH: triangle
+> 0101010 100
+> 0100010 001
+> 1000000 003
+> 0000001 002
+> 0101000 010
+> 0001010 001
+> 0100000 100
+> 0000010 010
+
+PATH: 3circle
+> 0101000 010
+> 0001010 001
+> 0100000 100
+> 0000010 010 
+
+
+
+
+
+
+
+
+
+
+COMP [J0 = 1000100];
+COMP [P0 = 12];
+COMP [A0 = 3];
+LOAD [triangle];
+ASIN [P1 < 3];
+ASIN [A0 < 5];
+
+
+COMP [J0 = 0010010];
+COMP [A0 = 1];
+COMP [A1 = 2];
+LOAD [3circle];
+
+
+
+
+PATH tr1:
+[0101010 : 100];
+0100010 : 001];
+tr1 [1000000 : 003];
+tr1 [0000001 : 002];
+tr1 [0101000 : 010];
+tr1 [0001010 : 001];
+tr1 [0100000 : 100];
+tr1 [0000010 : 010];
+
+PATH: 3circle
+> 010
+> 0001010 001
+> 0100000 100
+> 0000010 010 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*const char *text =
+COMP J0 1000100
+COMP P0 12
+COMP A0 3
+LOAD triangle
+ASIN P1 3
+ASIN A0 5
+
+
+COMP J0 0010010
+COMP A0 1
+COMP A1 2
+LOAD 3circle
+
+
+
+COMP: J0 = 1000100;
+COMP: P0 = 12;
+COMP: A0 = 3;
+LOAD: triangle;
+ASIN: P1 < 3;
+ASIN: A0 < 5;
+ENDA;
+
+
+
+ACTION test
+> COMP: J0 == 1000100]
+> COMP: A1 == 1
+> COMP: A0 == 0
+> ASIN: P1 = 1
+> ASIN: P0 = 2
+> LOAD: triangle;
+
+
+
+PATH triangle
+> 0101010 : 100
+> 0100010 : 001
+> 1000000 : 003
+> 0000001 : 002
+> 0101000 : 010
+> 0001010 : 001
+> 0100000 : 100
+> 0000010 : 010;
+
+
+PATH: 3circle
+> 0101000 010
+> 0001010 001
+> 0100000 100
+> 0000010 010 
+*/
+
+
+
+
+
+
+
+
+Final
+-------------------------------------------------------
+
+class Program
+{
+	public:
+  	bool Jump;
+	
+	ACTION_t ACTION;
+	PATH_t PATH;
+	
+	COMP_t COMP;
+	LOAD_t LOAD;
+	INCR_t INCR;
+	DECR_t DECR;
+	ASIN_t ASIN;
+	int ENDA;
+	
+	
+	public:
+	Program()
+	{
+		Jump = false;
+	}
+	
+	virtual func Code()
+	{
+		
+	}		
+	
+};
+
+
+
+
+
+class : Program
+{
+	public:
+	func Code()
+	{
+		ACTION /*Check Triangle*/ 
+		[COMP [L0 == 00100010]]
+		[COMP [P0 == 2]]
+		[COMP [P1 == 1]]
+		[LOAD [1]]
+		[INCR [P0]]
+		[ENDA];
+		
+		
+		PATH /*Triangle*/
+		^ 0
+		|0101010 | 100
+		|0101000 | 010
+		|1001000 | 001;
+	}
+	
+} Program2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

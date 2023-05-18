@@ -1,0 +1,180 @@
+
+
+====================Incoming Request==============================
+Register_Module("bootloader");
+Register_Module("simulator");
+
+
+Register_Command("bootloader", "gettemp", callback);
+Register_Command("bootloader", "getspeed", callback);
+Register_Command("bootloader", "loados", callback);
+Register_Command("bootloader", "getval", callback);
+Register_Command("bootloader", "print", callback);
+
+
+
+
+
+
+-----------------------ManualControl--------------------------
+Register_Command("simulator", "setleft", callback);
+Register_Command("simulator", "setright", callback);
+
+
+
+
+
+-----------------------Simulator--------------------------
+Register_Command("simulator", "setir", callback);
+Register_Command("simulator", "setsonar", callback);
+Register_Command("simulator", "setencoder", callback);
+
+Register_Command("simulator", "getspeeds", callback);
+
+
+
+
+
+
+
+
+
+
+====================Outgoing Request==============================
+Bot:    terminal print This is a message \r
+Server: 201
+
+
+
+
+Server Commands:
+Software: 0 GET_DEVICES
+Server:   -length 2 -data 12
+
+
+
+
+
+
+HandShaking Commands:
+uC with Server:
+
+Server: WRU?
+Bot:    SmartCat
+
+Server: VERSION?
+Bot:    1.0
+
+Server: PRINT_MODULES
+Bot:    -length 48 -data simulator manualcontrol debug loados 
+
+Server: LISTEN
+Bot:    OK 
+
+
+
+Server with Software: (Very Careful for Third Party Software)
+Software: HELLO_SMARTCAT_SERVER
+Server:   HELLO
+Software: I_WANT_TO_CONNECT
+Server:   OK
+Software: GET_DEVICES
+Server:   1 2 3 4 5
+Software: GET_INFO 1
+Server:   SmartCat 1.0 Knight_Raider
+Software: GET_INFO 2
+Server:   SmartCat 1.0 Fallen_Kingdom
+Software: GET_MODULES 1
+Server:   simulator manualcontrol debug loados
+Software: 1 simulator -help
+Server:   //help text
+Software: 
+
+
+
+
+
+Command Examples:
+From PC to uC
+
+Server will get:  [DestMCU_ID] [Module] [Command] [Data]
+uC will get:      [Module] [Command] [Data]
+uC will send:     
+
+
+Requests:
+simulator setir 1 0 1 0 0 0 1 1 1 0 \r
+sumulator setsonar 120 328 432 \r
+sumulator setencoder 120 423 \r
+
+Response:
+simulator 201
+
+
+Requests:  simulator getspeeds
+Response:  simulator 480 560 
+
+
+
+
+
+Bot Configuration--------------------------------------
+Software: 1 botconfig updateconfig 20000134 4 124
+Bot:      botconfig 201
+
+Software: 1 botconfig saveconfig
+Bot:      botconfig 201
+
+Software: 1 botconfig getconfig
+Bot:      botconfig 
+<Group>
+<Header>
+PID Control
+</Header>
+<Description>
+This is a description
+</Description>
+
+
+<Slider>
+<Address>
+20000134
+</Address>
+<Size>4</Size>
+<Min>
+100
+</Min>
+<Max>
+300
+</Max>
+<Change>
+1
+</Change>
+</Slider>
+
+
+<Input>
+<Address>
+20000134
+</Address>
+<Size>4</Size>
+</Input>
+
+
+<Bool>
+<Address>
+20000134
+</Address>
+<Size>1</Size>
+</Bool>
+
+
+
+</Group>
+
+
+
+
+
+
+

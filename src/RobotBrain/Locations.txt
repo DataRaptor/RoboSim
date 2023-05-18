@@ -1,0 +1,15 @@
+             Flash      Size               Mem         Size
+Bootloader:  0x8000000  0x3800 (14Kb)      0x20000000  0xC00 (3Kb)
+TitanOs:     0x8004000  0x2800 (10Kb)      0x20000C00  0xC00 (3kb)
+SmartCat:    0x8006000  0x7800 (30Kb)      0x20001800  0x2800 (10kb)
+UserProgram: 0x800D800  0x3800 (10Kb)      0x20004000  0x1000 (4Kb)
+
+
+
+
+
+
+
+
+
+

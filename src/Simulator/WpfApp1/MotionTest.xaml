@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfApp1.MotionTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MotionTest" Height="636" Width="1202">
+    <Grid>
+        <Border BorderBrush="#FFB9C4C7" BorderThickness="1" Height="154" Canvas.Left="181" Canvas.Top="143" Width="148" RenderTransformOrigin="0.5,0.5" Margin="223,140,823,311">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="29.58"/>
+                    <TranslateTransform X="0"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Grid>
+                <Ellipse Fill="#FF97B8C7" Stroke="#FF97B8C7" Margin="120,10,16,132"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
